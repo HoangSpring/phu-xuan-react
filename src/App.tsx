@@ -1,10 +1,12 @@
+import Header from './components/Header'
+
 function App() {
   return (
     <div>
-      <h1>phu-xuan-react</h1>
-      <p>Dự án xuyên suốt học phần Web FrontEnd nâng cao</p>
-      <p>Trường Đại học Phú Xuân — Khoa Công nghệ thông tin</p>
-      <p>Sinh viên: Lê Văn Hoàng</p>
+      <Header />
+      <main>
+        <p>Nội dung chính sẽ được xây dựng ở các buổi sau.</p>
+      </main>
     </div>
   )
 }
