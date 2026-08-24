@@ -16,4 +16,4 @@ function WelcomeBanner() {
     )
 }
 
-export default WelcomeBanner
+export default WelcomeBanner    
