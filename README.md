@@ -1,27 +1,48 @@
-# Ẩm thực Cố đô Huế - Phu Xuan React (Buổi 5)
+# Bài 7: Quản lý sự kiện trong React (Event Handling)
 
-Ứng dụng thực đơn ẩm thực Huế được xây dựng bằng React, Vite và TypeScript/JSX. Dự án thực hành các kiến thức cơ bản về Component Composition, Props, State (`useState`), Conditional Rendering và lifting state up.
+Dự án thực hành môn React JS — Báo cáo kết quả triển khai các Lab thực hành quản lý sự kiện, tối ưu trải nghiệm người dùng (UX) và hỗ trợ truy cập (Accessibility - A11y).
 
-## 📸 Demo giao diện
+---
 
-![Giao diện Ẩm thực Cố đô Huế](./demo.jpg)
+## 📸 Demo kết quả thực hiện Lab
 
-## ✨ Tính năng chính
+### 1. Lab 1 & Lab 2 — Thử nghiệm sự kiện & Danh sách địa danh
+* Phân biệt `e.target` và `e.currentTarget`.
+* Xử lý chọn địa danh bằng bàn phím (Space/Enter) và lọc dữ liệu bằng `data-*`.
+* Ngăn chặn nổi bọt sự kiện với `e.stopPropagation()` và ứng dụng pha bắt (`onClickCapture`).
 
-* **Danh sách thực đơn động:** Hiển thị danh sách món ăn từ dữ liệu `menuItems` (Bún bò Huế, Bánh khoái, Chè Huế, Cơm hến,...).
-* **Định dạng tiền tệ:** Tự động hiển thị giá tiền chuẩn định dạng Việt Nam (ví dụ: `45.000đ`).
-* **Nhãn món cay (Conditional Rendering):** Tự động nhận biết món ăn cay để gắn nhãn `🌶 Món cay`.
-* **Yêu thích món ăn (State & Callback):** Bấm nút để đánh dấu/bỏ đánh dấu món ăn yêu thích độc lập.
-* **Đếm tổng số món yêu thích (Lifting State Up):** Quản lý trạng thái ở `App` và tính tổng số món đã chọn (`n/5`).
+![Demo Lab 1 & Lab 2](./lab12(bai7).jpg)
 
-## 🛠 Thư viện & Công nghệ
+---
 
-* **Frontend:** React, Vite, JavaScript / TypeScript.
-* **Styling:** CSS / Inline Styles.
+### 2. Lab 3 & Lab 4 — Lượt thích & Tìm kiếm món ăn Huế
+* Cập nhật State dạng hàm callback `setX((prev) => ...)` tránh stale state.
+* Xử lý form tìm kiếm với `e.preventDefault()`, không làm reload trang.
+* Hỗ trợ phím tắt `Esc` để xóa nhanh từ khóa và tích hợp `e.nativeEvent.isComposing` hỗ trợ bộ gõ tiếng Việt (Telex/VNI).
 
-## 🚀 Hướng dẫn cài đặt & Chạy ứng dụng
+![Demo Lab 3 & Lab 4](./lab34(bai7).jpg)
 
-1. **Clone repository:**
+---
+
+### 3. Lab 5 — Sắp xếp món ăn Huế yêu thích (Kéo thả & Phím tắt)
+* Tính năng kéo thả danh sách bằng HTML5 Drag and Drop (`onDragStart`, `onDragOver`, `onDrop`, `onDragEnd`).
+* Hỗ trợ thay đổi thứ tự bằng phím tắt `Alt + Mũi tên lên/xuống`.
+* Tích hợp `aria-live="polite"` thông báo vị trí cho trình đọc màn hình.
+
+![Demo Lab 5](./lab5(bai7).jpg)
+
+---
+
+## 🛠️ Công nghệ sử dụng
+* **Core:** React JS (Vite)
+* **Language:** JavaScript (ES6+)
+* **Styling:** CSS3
+* **Accessibility:** ARIA attributes, Keyboard Navigation
+
+---
+
+## 🚀 Hướng dẫn chạy dự án
+
+1. **Cài đặt thư viện:**
    ```bash
-   git clone [https://github.com/HoangSpring/phu-xuan-react.git](https://github.com/HoangSpring/phu-xuan-react.git)
-   cd phu-xuan-react
+   npm install
