@@ -2,6 +2,7 @@ import ThuSuKien from '../components/Bai7/ThuSuKien';
 import DanhSachDiaDanh from '../components/Bai7/DanhSachDiaDanh';
 import KhamPhaDiaDanh from '../components/Bai7/KhamPhaDiaDanh';
 import LuotThichMonAn from '../components/Bai7/LuotThichMonAn';
+import TimMonAnHue from '../components/Bai7/TimMonAnHue';
 import '../styles/Bai7.css';
 
 export default function Bai7Page() {
@@ -12,6 +13,7 @@ export default function Bai7Page() {
       <DanhSachDiaDanh />
       <KhamPhaDiaDanh />
       <LuotThichMonAn />
+      <TimMonAnHue />
     </main>
   );
 }
