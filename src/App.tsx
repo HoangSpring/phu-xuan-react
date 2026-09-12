@@ -1,39 +1,54 @@
 import { useState } from 'react';
-import MenuList from './components/MenuList';
-import { menu } from './data/menu';
+import LuotXemDaiNoi from './features/landmarks/LuotXemDaiNoi';
+import TrangMonAn from './features/food/TrangMonAn';
+import TimMonAn from './features/food/TimMonAn';
+import DanhSachDiaDanh from './features/landmarks/DanhSachDiaDanh';
 
 function App() {
-  const [favoriteIds, setFavoriteIds] = useState([]);
-
-  function handleToggleFavorite(id) {
-    setFavoriteIds((prevIds) =>
-      prevIds.includes(id)
-        ? prevIds.filter((favId) => favId !== id) 
-        : [...prevIds, id] 
-    );
-  }
+  const [hienThi, setHienThi] = useState(true);
 
   return (
-    <div className="app" style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto', fontFamily: 'sans-serif' }}>
-      <h1>Ẩm thực Cố đô Huế</h1>
-      <div
-        style={{
-          backgroundColor: '#e3f2fd',
-          color: '#1565c0',
-          padding: '12px 16px',
-          borderRadius: '6px',
-          fontWeight: 'bold',
-          marginBottom: '1.5rem',
-        }}
-      >
-        Số món đã yêu thích: {favoriteIds.length}/{menu.length}
-      </div>
+    <div style={{ padding: '2rem', fontFamily: 'sans-serif', maxWidth: '650px', margin: '0 auto' }}>
+      <h1>Bài 6: React Hook Nâng Cao</h1>
 
-      <MenuList
-        items={menu}
-        favoriteIds={favoriteIds}
-        onToggleFavorite={handleToggleFavorite}
-      />
+      {/* Lab 1 */}
+      <section style={{ marginBottom: '2rem' }}>
+        <h2>Lab 1: Lượt xem Đại Nội Huế</h2>
+        <button
+          onClick={() => setHienThi(!hienThi)}
+          style={{
+            padding: '8px 16px',
+            borderRadius: '4px',
+            border: '1px solid #ccc',
+            cursor: 'pointer',
+            fontWeight: 'bold',
+          }}
+        >
+          {hienThi ? 'Ẩn thẻ Đại Nội' : 'Hiện thẻ Đại Nội'}
+        </button>
+        {hienThi && <LuotXemDaiNoi />}
+      </section>
+
+      <hr />
+
+      {/* Lab 2 */}
+      <section style={{ marginBottom: '2rem' }}>
+        <TrangMonAn />
+      </section>
+
+      <hr />
+
+      {/* Lab 3 */}
+      <section style={{ marginBottom: '2rem' }}>
+        <TimMonAn />
+      </section>
+
+      <hr />
+
+      {/* Lab 4 */}
+      <section>
+        <DanhSachDiaDanh />
+      </section>
     </div>
   );
 }
