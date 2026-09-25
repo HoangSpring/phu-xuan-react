@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useForm } from '../../hooks/useForm';
 import { kiemChung } from './kiemChung';
 
 const GIA_TRI_BAN_DAU = {
@@ -18,21 +19,17 @@ const DS_TIEN_ICH = [
 ];
 
 export default function FormThemDiaDiem() {
-  const [duLieu, setDuLieu] = useState(GIA_TRI_BAN_DAU);
+  const {
+    duLieu,
+    trangThai,
+    xuLyThayDoi,
+    xuLyRoiO,
+    loiCuaO,
+    xuLyGui,
+    datLai,
+  } = useForm(GIA_TRI_BAN_DAU, kiemChung);
+
   const [tienIch, setTienIch] = useState([]);
-  const [daCham, setDaCham] = useState({});
-  const [trangThai, setTrangThai] = useState('cho'); // cho | dang-gui | thanh-cong | that-bai
-
-  // Lỗi là trạng thái dẫn xuất
-  const loi = kiemChung(duLieu);
-
-  function xuLyThayDoi(e) {
-    const { name, value, type, checked } = e.target;
-    setDuLieu((truoc) => ({
-      ...truoc,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
-  }
 
   function xuLyTich(e) {
     const { value, checked } = e.target;
@@ -41,41 +38,14 @@ export default function FormThemDiaDiem() {
     );
   }
 
-  function xuLyRoiO(e) {
-    const { name } = e.target;
-    setDaCham((truoc) => ({ ...truoc, [name]: true }));
-  }
-
-  function loiHienThi(ten) {
-    return daCham[ten] ? loi[ten] : undefined;
-  }
-
-  async function xuLyGui(e) {
-    e.preventDefault();
-
-    // Đánh dấu tất cả ô là đã chạm để hiện lỗi nếu chưa nhập
-    const tatCaDaCham = {};
-    Object.keys(GIA_TRI_BAN_DAU).forEach((k) => {
-      tatCaDaCham[k] = true;
-    });
-    setDaCham(tatCaDaCham);
-
-    if (Object.keys(kiemChung(duLieu)).length > 0) return;
-
-    try {
-      setTrangThai('dang-gui');
-      await new Promise((giai) => setTimeout(giai, 1200)); // Giả lập gọi server
-      setTrangThai('thanh-cong');
-      setDuLieu(GIA_TRI_BAN_DAU);
-      setTienIch([]);
-      setDaCham({});
-    } catch {
-      setTrangThai('that-bai');
-    }
-  }
+  const guiForm = xuLyGui(async (gt) => {
+    await new Promise((r) => setTimeout(r, 1200));
+    console.log('Dữ liệu đã gửi:', { ...gt, tienIch, giaVe: Number(gt.giaVe) });
+    setTienIch([]);
+  });
 
   return (
-    <form onSubmit={xuLyGui} noValidate>
+    <form onSubmit={guiForm} noValidate>
       {/* 1. Tên địa điểm */}
       <div className="truong">
         <label htmlFor="ten">Tên địa điểm (*)</label>
@@ -87,11 +57,11 @@ export default function FormThemDiaDiem() {
           onChange={xuLyThayDoi}
           onBlur={xuLyRoiO}
           placeholder="Ví dụ: Lăng Minh Mạng"
-          aria-invalid={loiHienThi('ten') ? true : undefined}
+          aria-invalid={loiCuaO('ten') ? true : undefined}
         />
-        {loiHienThi('ten') && (
+        {loiCuaO('ten') && (
           <p role="alert" className="thong-bao-loi" style={{ color: 'red' }}>
-            {loiHienThi('ten')}
+            {loiCuaO('ten')}
           </p>
         )}
       </div>
@@ -108,9 +78,9 @@ export default function FormThemDiaDiem() {
           onBlur={xuLyRoiO}
           placeholder="0"
         />
-        {loiHienThi('giaVe') && (
+        {loiCuaO('giaVe') && (
           <p role="alert" className="thong-bao-loi" style={{ color: 'red' }}>
-            {loiHienThi('giaVe')}
+            {loiCuaO('giaVe')}
           </p>
         )}
       </div>
@@ -131,9 +101,9 @@ export default function FormThemDiaDiem() {
           <option value="thuy-bieu">Thuỷ Biều</option>
           <option value="vy-da">Vỹ Dạ</option>
         </select>
-        {loiHienThi('phuong') && (
+        {loiCuaO('phuong') && (
           <p role="alert" className="thong-bao-loi" style={{ color: 'red' }}>
-            {loiHienThi('phuong')}
+            {loiCuaO('phuong')}
           </p>
         )}
       </div>
@@ -202,9 +172,9 @@ export default function FormThemDiaDiem() {
           />
           Tôi xác nhận thông tin địa điểm là chính xác
         </label>
-        {loiHienThi('dongY') && (
+        {loiCuaO('dongY') && (
           <p role="alert" className="thong-bao-loi" style={{ color: 'red' }}>
-            {loiHienThi('dongY')}
+            {loiCuaO('dongY')}
           </p>
         )}
       </div>
@@ -229,9 +199,8 @@ export default function FormThemDiaDiem() {
           type="button"
           style={{ marginLeft: '8px' }}
           onClick={() => {
-            setDuLieu(GIA_TRI_BAN_DAU);
+            datLai();
             setTienIch([]);
-            setDaCham({});
           }}
         >
           Nhập lại
