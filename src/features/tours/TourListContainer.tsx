@@ -2,14 +2,18 @@ import { useState } from 'react';
 import { tours } from '../../data/tours';
 import { TourListView } from './TourListView';
 
-// Container chịu trách nhiệm quản lý State và Logic lọc dữ liệu
 export function TourListContainer() {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000000);
+  const [query, setQuery] = useState('');
 
-  const filteredTours = tours.filter(
-    (t) => t.price >= minPrice && t.price <= maxPrice
-  );
+  // Lọc kết hợp: theo khoảng giá VÀ theo từ khóa tìm kiếm
+  const normalized = query.trim().toLowerCase();
+  const filteredTours = tours
+    .filter((t) => t.price >= minPrice && t.price <= maxPrice)
+    .filter((t) =>
+      normalized === '' ? true : t.name.toLowerCase().includes(normalized)
+    );
 
   return (
     <TourListView
@@ -17,8 +21,10 @@ export function TourListContainer() {
       totalCount={tours.length}
       minPrice={minPrice}
       maxPrice={maxPrice}
+      query={query}
       onMinChange={setMinPrice}
       onMaxChange={setMaxPrice}
+      onQueryChange={setQuery}
     />
   );
 }
