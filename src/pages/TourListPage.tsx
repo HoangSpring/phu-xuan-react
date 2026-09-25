@@ -4,17 +4,15 @@ import { PriceFilter } from '../features/tours/PriceFilter';
 import { TourGrid } from '../features/tours/TourGrid';
 
 export function TourListPage() {
-  // State nâng lên cha chung — Single Source of Truth
-  const [minPrice, setMinPrice] = useState<number>(0);
-  const [maxPrice, setMaxPrice] = useState<number>(1000000);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(1000000);
 
-  // Lọc danh sách tour theo khoảng giá mỗi khi state thay đổi
   const filteredTours = tours.filter(
     (t) => t.price >= minPrice && t.price <= maxPrice
   );
 
   return (
-    <main className="tour-list-page">
+    <main className="tour-list-page" style={{ padding: '20px' }}>
       <h1>Khám phá Huế qua 6 hành trình</h1>
       <PriceFilter
         minPrice={minPrice}

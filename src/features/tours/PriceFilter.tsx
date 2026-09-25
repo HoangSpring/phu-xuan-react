@@ -5,12 +5,7 @@ type PriceFilterProps = {
   onMaxChange: (value: number) => void;
 };
 
-export function PriceFilter({
-  minPrice,
-  maxPrice,
-  onMinChange,
-  onMaxChange,
-}: PriceFilterProps) {
+export function PriceFilter({ minPrice, maxPrice, onMinChange, onMaxChange }: PriceFilterProps) {
   return (
     <div className="price-filter">
       <label>
@@ -23,7 +18,7 @@ export function PriceFilter({
           value={minPrice}
           onChange={(e) => onMinChange(Number(e.target.value))}
         />
-        <span>{minPrice.toLocaleString()}đ</span>
+        <span>{minPrice.toLocaleString('vi-VN')}đ</span>
       </label>
       <label>
         Đến:
@@ -35,7 +30,7 @@ export function PriceFilter({
           value={maxPrice}
           onChange={(e) => onMaxChange(Number(e.target.value))}
         />
-        <span>{maxPrice.toLocaleString()}đ</span>
+        <span>{maxPrice.toLocaleString('vi-VN')}đ</span>
       </label>
     </div>
   );
