@@ -1,0 +1,68 @@
+import type { DiTich } from '../features/ditich/types';
+
+export const danhSachDiTich: DiTich[] = [
+  {
+    id: 'dt-1',
+    ten: 'Đại Nội Huế',
+    loai: 'kinh-thanh',
+    theKy: 19,
+    moTa: 'Trung tâm quản lý hành chính và hoàng cung của triều đại nhà Nguyễn.',
+    daThamQuan: false,
+  },
+  {
+    id: 'dt-2',
+    ten: 'Lăng Tự Đức',
+    loai: 'lang-tam',
+    theKy: 19,
+    moTa: 'Một trong những công trình kiến trúc đẹp nhất của kiến trúc thời Nguyễn.',
+    daThamQuan: false,
+  },
+  {
+    id: 'dt-3',
+    ten: 'Lăng Khải Định',
+    loai: 'lang-tam',
+    theKy: 20,
+    moTa: 'Công trình kiến trúc độc đáo kết hợp giữa nghệ thuật Á - Âu.',
+    daThamQuan: false,
+  },
+  {
+    id: 'dt-4',
+    ten: 'Lăng Minh Mạng',
+    loai: 'lang-tam',
+    theKy: 19,
+    moTa: 'Kiến trúc thâm nghiêm, uy nghi và thể hiện tư tưởng triết học Đông Phương.',
+    daThamQuan: false,
+  },
+  {
+    id: 'dt-5',
+    ten: 'Chùa Thiên Mụ',
+    loai: 'chua',
+    theKy: 17,
+    moTa: 'Ngôi chùa cổ kính nằm bên bờ sông Hương, biểu tượng của xứ Huế.',
+    daThamQuan: true,
+  },
+  {
+    id: 'dt-6',
+    ten: 'Cầu Trường Tiền',
+    loai: 'cong-trinh-cong-cong',
+    theKy: 19,
+    moTa: 'Cây cầu thép bắc qua sông Hương với kiến trúc đặc trưng duyên dáng.',
+    daThamQuan: true,
+  },
+  {
+    id: 'dt-7',
+    ten: 'Đàn Nam Giao',
+    loai: 'te-dan',
+    theKy: 19,
+    moTa: 'Nơi các vua nhà Nguyễn làm lễ tế trời đất hàng năm.',
+    daThamQuan: false,
+  },
+  {
+    id: 'dt-8',
+    ten: 'Chùa Từ Đàm',
+    loai: 'chua',
+    theKy: 17,
+    moTa: 'Trung tâm Phật giáo quan trọng của miền Trung.',
+    daThamQuan: false,
+  },
+];
