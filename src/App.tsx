@@ -1,11 +1,7 @@
-import { TourListPage } from './pages/TourListPage';
+import { TourListContainer } from './features/tours/TourListContainer';
 
 function App() {
-  return (
-    <div>
-      <TourListPage />
-    </div>
-  );
+  return <TourListContainer />;
 }
 
 export default App;
