@@ -1,29 +1,42 @@
-import The from "./components/The";
+import BoCucTrang from "./components/BoCucTrang";
+import DanhSach from "./components/DanhSach";
 import TheDiaDanh from "./components/TheDiaDanh";
 import { DANH_SACH_DIA_DANH } from "./du-lieu/diaDanh";
+import { DANH_SACH_MON_AN } from "./du-lieu/monAn";
 import "./App.css";
 
 function App() {
   return (
-    <div className="trang">
-      <h1>Khám phá Cố đô Huế</h1>
+    <BoCucTrang
+      thanhDieuHuong="Du lịch Huế — phu-xuan-react"
+      chanTrang={<span>© 2026 Nhóm ... — INT.7.18</span>}
+      noiDungChinh={
+        <>
+          <h2>Địa danh</h2>
+          <div className="luoi-dia-danh">
+            {DANH_SACH_DIA_DANH.map((dd) => (
+              <TheDiaDanh key={dd.id} anh={dd.anh} ten={dd.ten} moTa={dd.moTa} />
+            ))}
+          </div>
 
-      <The tieuDe="Di tích tiêu biểu">
-        <div className="luoi-dia-danh">
-          {DANH_SACH_DIA_DANH.map((dd) => (
-            <TheDiaDanh key={dd.id} anh={dd.anh} ten={dd.ten} moTa={dd.moTa} />
-          ))}
-        </div>
-      </The>
+          <h2>Ẩm thực (kiểu chữ)</h2>
+          <DanhSach
+            cacMuc={DANH_SACH_MON_AN}
+            hienThiMuc={(mon: any) => (
+              <strong>{mon.ten} — {mon.gia.toLocaleString()}đ</strong>
+            )}
+          />
 
-      <The tieuDe="Ẩm thực Huế">
-        <ul>
-          <li>Bún bò Huế</li>
-          <li>Cơm hến</li>
-          <li>Bánh bèo, bánh nậm, bánh lọc</li>
-        </ul>
-      </The>
-    </div>
+          <h2>Ẩm thực (kiểu có nút)</h2>
+          <DanhSach
+            cacMuc={DANH_SACH_MON_AN}
+            hienThiMuc={(mon: any) => (
+              <span>{mon.ten} <button>Đặt món</button></span>
+            )}
+          />
+        </>
+      }
+    />
   );
 }
 
