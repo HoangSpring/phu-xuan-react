@@ -1,5 +1,6 @@
 📸 Ảnh chụp giao diện
 ![image](/anh-chup/1790303753886_187145961479478437_7299097511803627638_c36cdfa90eabe5e913e24472058ef765.jpg)
+
 🧩 Các thành phần đã xây dựng (Components)
 1. TheDiaDanh (src/components/TheDiaDanh.jsx)
 Thành phần hiển thị thẻ địa danh tái sử dụng qua props (anh, ten, moTa).
