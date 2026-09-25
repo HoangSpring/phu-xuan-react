@@ -2,6 +2,7 @@ import BoCucTrang from "./components/BoCucTrang";
 import TheDiaDanh from "./components/TheDiaDanh";
 import HopThongBao, { HopThongBaoThanhCong } from "./components/HopThongBao";
 import { DANH_SACH_DIA_DANH } from "./du-lieu/diaDanh";
+import HuyHieu from "./components/HuyHieu";
 
 function TrangDanhMuc() {
   const soLuong = DANH_SACH_DIA_DANH.length;
