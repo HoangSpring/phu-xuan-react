@@ -1,12 +1,10 @@
-import FormThemDiaDiem from './features/dia-diem/FormThemDiaDiem';
-import FormGopY from './features/gop-y/FormGopY';
+import TrangQuanLyDiaDiem from './features/dia-diem/TrangQuanLyDiaDiem';
 
 function App() {
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-      <h1>Thêm địa điểm tham quan</h1>
-      <FormThemDiaDiem />
-      <FormGopY />
+    <div style={{ padding: '20px', maxWidth: '1000px', margin: '0 auto' }}>
+      <h1>Buổi 8: Quản lý biểu mẫu có kiểm soát</h1>
+      <TrangQuanLyDiaDiem />
     </div>
   );
 }
