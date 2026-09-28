@@ -1,0 +1,71 @@
+/* Bảng màu Ocean-depth dùng chung của khoá học */
+:root { --navy: #1b2a4a; --teal: #0f6e6a; --amber: #b8860b; --vien: #c9d3de; }
+
+.trang-Bài7 {
+  max-width: 880px; margin: 0 auto; padding: 24px;
+  font-family: system-ui, sans-serif;
+}
+.trang-Bài7 h1 { color: var(--navy); }
+.lab {
+  border: 1px solid var(--vien); border-radius: 12px;
+  padding: 16px 20px; margin: 20px 0;
+}
+.lab h2 { color: var(--teal); margin-top: 0; }
+button {
+  cursor: pointer; margin: 4px; padding: 6px 12px;
+  border-radius: 6px; border: 1px solid var(--vien); background: #fff;
+}
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Lab 1 */
+.the-thu {
+  display: inline-flex; gap: 12px; padding: 12px 16px; margin: 12px 0;
+  border: 2px dashed var(--teal); border-radius: 8px; cursor: pointer;
+}
+.nhat-ky { font-family: monospace; font-size: 14px; }
+
+/* Lab 2 */
+.thanh-loc button.dang-loc { background: var(--navy); color: #fff; }
+.ds-dia-danh { list-style: none; padding: 0; }
+.the-dia-danh label {
+  display: flex; gap: 10px; align-items: center; padding: 8px 12px; margin: 6px 0;
+  border: 1px solid var(--vien); border-radius: 8px; cursor: pointer;
+}
+.the-dia-danh.dang-chon label { background: #e8f4f3; border-color: var(--teal); }
+.loai { margin-left: auto; font-size: 13px; color: #5a6475; }
+.lich-trinh { font-weight: 600; color: var(--navy); }
+
+/* Lab 3 */
+.luoi-the {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.the-mo-rong {
+  border: 1px solid var(--vien); border-radius: 10px;
+  padding: 12px; cursor: pointer;
+}
+.the-mo-rong.dang-mo { border-color: var(--amber); background: #fbf4e4; }
+.the-mo-rong h3 { margin: 0 0 4px; font-size: 17px; }
+.thong-ke { color: #5a6475; }
+
+/* Lab 4 */
+.form-tim { position: relative; display: flex; gap: 6px; }
+.form-tim input {
+  flex: 1; padding: 8px 10px;
+  border-radius: 6px; border: 1px solid var(--vien);
+}
+.goi-y {
+  position: absolute; top: 100%; left: 0; padding: 4px;
+  background: #fff; border: 1px solid var(--vien); border-radius: 8px;
+}
+
+/* Lab 5 */
+.ds-mon-yeu-thich li {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 12px; margin: 6px 0; background: #fff; cursor: grab;
+  border: 1px solid var(--vien); border-radius: 8px;
+}
+.ds-mon-yeu-thich li:focus { outline: 3px solid var(--teal); }
+.ds-mon-yeu-thich li.dang-keo { opacity: 0.4; }
+.ds-mon-yeu-thich li.vi-tri-tha { border-top: 3px solid var(--amber); }
+.thong-bao { min-height: 1.4em; color: var(--teal); }
