@@ -1,33 +1,33 @@
 import { useState } from 'react';
-import { TourListContainer } from './features/tours/TourListContainer';
-import { DiTichListView } from './features/ditich/DiTichListView';
+import BoCucTrang from './components/BoCucTrang.tsx';
+import ThanhDieuHuong from './components/ThanhDieuHuong.tsx';
+import DanhSachDiaDanhContainer from './components/DanhSachDiaDanhContainer.tsx';
+import GioiThieuHue from './pages/GioiThieuHue.tsx';
+import BangDiaDanhCoLoc from './pages/BangDiaDanhCoLoc.tsx';
+import TrangBinhLuan from './pages/TrangBinhLuan.tsx';
+import { DS_DIA_DANH } from './du-lieu/diaDanh.ts';
 
-type Trang = 'tour' | 'ditich';
+export default function App() {
+  // Mảng rỗng [] không đủ thông tin để suy kiểu → khai báo tường minh number[]
+  const [dsYeuThich, setDsYeuThich] = useState<number[]>([]);
 
-function App() {
-  const [trang, setTrang] = useState<Trang>('tour');
+  function doiYeuThich(id: number) {
+    setDsYeuThich((truoc) => (truoc.includes(id) ? truoc.filter((x) => x !== id) : [...truoc, id]));
+  }
 
   return (
-    <div>
-      <nav className="top-nav" style={{ padding: '16px 20px', backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0', display: 'flex', gap: '12px' }}>
-        <button
-          onClick={() => setTrang('tour')}
-          disabled={trang === 'tour'}
-          style={{ padding: '8px 16px', cursor: 'pointer' }}
-        >
-          Tour
-        </button>
-        <button
-          onClick={() => setTrang('ditich')}
-          disabled={trang === 'ditich'}
-          style={{ padding: '8px 16px', cursor: 'pointer' }}
-        >
-          Di tích
-        </button>
-      </nav>
-      {trang === 'tour' ? <TourListContainer /> : <DiTichListView />}
-    </div>
+    <BoCucTrang
+      thanhDieuHuong={<ThanhDieuHuong soYeuThich={dsYeuThich.length} />}
+      noiDungChinh={
+        <>
+          <GioiThieuHue />
+          <h2>Địa danh nổi bật</h2>
+          <DanhSachDiaDanhContainer dsYeuThich={dsYeuThich} onDoiYeuThich={doiYeuThich} />
+          <BangDiaDanhCoLoc dsDiaDanh={DS_DIA_DANH} />
+          <TrangBinhLuan dsDiaDanh={DS_DIA_DANH} />
+        </>
+      }
+      chanTrang={<small>phu-xuan-react · Buổi 11 · TypeScript</small>}
+    />
   );
 }
-
-export default App;
