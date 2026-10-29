@@ -1,12 +1,39 @@
-function App() {
+import BoCucTrang from "./components/BoCucTrang";
+import TheDiaDanh from "./components/TheDiaDanh";
+import HopThongBao, { HopThongBaoThanhCong } from "./components/HopThongBao";
+import { DANH_SACH_DIA_DANH } from "./du-lieu/diaDanh";
+import HuyHieu from "./components/HuyHieu";
+
+function TrangDanhMuc() {
+  const soLuong = DANH_SACH_DIA_DANH.length;
   return (
-    <div>
-      <h1>phu-xuan-react</h1>
-      <p>Dự án xuyên suốt học phần Web FrontEnd nâng cao</p>
-      <p>Trường Đại học Phú Xuân — Khoa Công nghệ thông tin</p>
-      <p>Sinh viên: Lê Văn Hoàng</p>
-    </div>
-  )
+    <BoCucTrang
+      thanhDieuHuong="Danh mục địa danh Huế"
+      chanTrang={<span>© 2026 phu-xuan-react</span>}
+      noiDungChinh={
+        <>
+          <HopThongBao>
+            Hiện có {soLuong} địa danh đang được giới thiệu.
+          </HopThongBao>
+
+          <HopThongBaoThanhCong>
+            Dữ liệu đã tải xong.
+          </HopThongBaoThanhCong>
+
+          <div className="luoi-dia-danh">
+            {DANH_SACH_DIA_DANH.map((dd) => (
+              <TheDiaDanh
+                key={dd.id}
+                anh={dd.anh}
+                ten={dd.ten}
+                moTa={dd.moTa}
+              />
+            ))}
+          </div>
+        </>
+      }
+    />
+  );
 }
 
-export default App
+export default TrangDanhMuc;
